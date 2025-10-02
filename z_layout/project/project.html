@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>project</title>
+  <style>
+
+    .madeby{
+      display: flex;
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      align-items: center;
+    }
+
+    .project-header {
+      margin-top: 60px;
+      display: inline-flex;
+      align-items: center;
+      border-bottom: 1px solid;
+    }
+
+    .project-name {
+      margin-right: 50px;
+    }
+
+    .btn-project {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .middle {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 20px;
+    }
+
+    .option {
+      margin-left: 10px;
+    }
+
+    body {
+      background: linear-gradient(270deg, #DEDDDD 0%, #787777, 100%);
+    }
+
+    table{
+      width: 100%;
+      text-align: center;
+      border-radius: 15px;
+      background: linear-gradient(180deg, #DEDDDD 0%, #ccc 100%);
+    }
+
+    th {
+      padding: 12px 16px;
+      border-bottom: 1px solid #ccc;
+    }
+
+    td {
+      padding: 10px 0;
+    }
+
+  </style>
+</head>
+
+<body>
+  <div class="madeby">
+    <img src="" alt="icon"> 
+    <p>프로젝트 생성자</p>
+  </div>
+
+  <section class = "project-header">
+        <h2 class="project-name">프로젝트 명</h2>
+      <div class = "btn-project">
+        <button>
+          <img src="" alt="수정버튼">
+        </button>
+        <button>
+          <img src="" alt="삭제버튼">
+        </button>
+    </div>
+  </section>
+
+  <section class = "middle">
+    <div>
+      <input type="search">
+
+      <label>
+        <input type="radio" value="assignee" name="assignee"> assignee
+      </label>
+      <label>
+        <input type="radio" value="status" name="status"> status
+      </label>
+      <label>
+        <input type="radio" value="tag" name="tag"> tag
+      </label>
+      <label>
+        <input type="radio" value="date" name="date"> date
+      </label>
+    </div>
+
+    <div class="option">
+      <select>
+        <option selected disabled>정렬</option>
+        <option value="1">start date</option>
+        <option value="2">end date</option>
+        <option value="asc">오름차순 정렬</option>
+        <option value="desc">내림차순 정렬</option>
+      </select>
+    </div>
+  </section>
+
+
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>task</th>
+            <th>assignee</th>
+            <th>status</th>
+            <th>start date</th>
+            <th>end date</th>
+            <th>tag</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td> 1 </td>
+            <td> 1 </td>
+            <td> 1 </td>
+            <td> 1 </td>
+            <td> 1 </td>
+            <td> 1 </td>
+          </tr>
+
+          <tr>
+            <td> 1 </td>
+            <td> 1 </td>
+            <td> 1 </td>
+            <td> 1 </td>
+            <td> 1 </td>
+            <td> 1 </td>
+          </tr>
+
+          <tr>
+            <td> 1 </td>
+            <td> 1 </td>
+            <td> 1 </td>
+            <td> 1 </td>
+            <td> 1 </td>
+            <td> 1 </td>
+          </tr>
+        </tbody>
+      </table>
+  </div>
+</body>
+
+</html>
