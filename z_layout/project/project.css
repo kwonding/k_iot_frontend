@@ -1,0 +1,86 @@
+.author {
+  display: flex;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  align-items: center;
+  opacity: 0.5;
+}
+
+.author img {
+  width: 20px;
+  height: 20px;
+  border: solid 1px #ccc;
+  padding: 2px;
+  opacity: 0.5;
+  border-radius: 50%;
+  margin-right: 5px;
+}
+
+.project-header {
+  margin-top: 60px;
+  display: inline-flex;
+  align-items: center;
+  border-bottom: 1px solid;
+}
+
+.project-name {
+  font-size: 30px;
+  font-weight: 600;
+  margin-right: 50px;
+}
+
+.btn-project {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-project button {
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+.btn-project img {
+  width: 15px;
+  height: 15px;
+  opacity: 0.5;
+  transition: opacity 0.2 ease;
+}
+
+.btn-project img:hover {
+  opacity: 1;
+}
+
+.range {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+}
+
+.option {
+  margin-left: 10px;
+}
+
+body {
+  background: linear-gradient(270deg, #dedddd 0%, #787777, 100%);
+}
+
+table {
+  width: 100%;
+  text-align: center;
+  border-radius: 15px;
+  background: linear-gradient(180deg, #dedddd 0%, #ccc 100%);
+}
+
+th {
+  padding: 12px 16px;
+  border-bottom: 1px solid #ccc;
+}
+
+td {
+  padding: 10px 0;
+}

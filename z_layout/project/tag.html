@@ -1,72 +1,20 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>tag</title>
-  <style>
-    body {
-  font-family: Arial, sans-serif;
-  padding: 20px;
-}
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>tag</title>
+    <link rel="stylesheet" href="./tag.css" />
+  </head>
+  <body>
+    <section class="container">
+      <div class="tag-maker">
+        <input type="text" id="tagName" placeholder="태그 이름 입력" />
 
-.tag-maker {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
+        <input type="color" id="tagColor" value="#f48c8c" />
+      </div>
 
-.tag-maker input[type="text"] {
-  width: 150px;
-  height: 30px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-  padding: 0 8px;
-  font-size: 14px;
-  outline: none;
-}
-
-.tag-maker input[type="color"] {
-  width: 40px;
-  height: 30px;
-  padding: 0;
-  border: none;
-  background: none;
-  cursor: pointer;
-}
-
-.tag-list {
-  margin-top: 15px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-}
-
-.tag {
-  display: inline-block;
-  padding: 4px 8px;
-  border-radius: 6px;
-  color: #fff;
-  font-size: 12px;
-}
-    
-  </style>
-
-</head>
-<body>
-  <section class="container">
-    
-    <div class="tag-maker">
-      <input type="text" id="tagName" placeholder="태그 이름 입력" />
-      
-      <input type="color" id="tagColor" value="#f48c8c" />
-    </div>
-
-  <div class="tag-list" id="tagList"></div>
-
-  </section>
-
-
-
-</body>
+      <div class="tag-list" id="tagList"></div>
+    </section>
+  </body>
 </html>
