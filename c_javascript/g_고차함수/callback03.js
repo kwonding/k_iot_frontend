@@ -55,6 +55,10 @@ console.log(numberArray.reverse()); // [ 8, 6, 5, 4, 3, 1 ]
 
 let nums = [5, 4, 6, 1, 3, 8, 9, 7];
 
+console.log(nums.indexOf(4)); // 1 // 앞에서 부터 첫번째 4
+console.log(nums.lastIndexOf(8)); // 5 - 뒤에서 부터 첫번째 8
+
+
 let firstOverSix = nums.find(num => num > 6);
 console.log(firstOverSix); // 8 >> 6보다 큰 수는 7, 8, 9 이지만 요소의 첫 번째 순서인 8이 출력됨
 
