@@ -52,7 +52,7 @@ numbers.forEach(function(value, index, array) {
 // 4번째 요소: 7
 // 5번째 요소: 36
 
-// anyArray.forEach(function(value, index, array) {});
+// anyArray.forEach(function(value, index, array) )
 anyArray.forEach(function(value, index, array) {
   console.log(`${index + 1}번째 요소: ${value}`);
 });
