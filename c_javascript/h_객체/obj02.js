@@ -26,8 +26,8 @@ let dog = {
   },
 
   greet: function() {
-    console.log(`Hello, ${this.name}`);
-    console.log(`Hello, ${this.name.last}`);
+    console.log(`Hello, ${this.name}`); //Hello, [object Object]
+    console.log(`Hello, ${this.name.last}`); //Hello, choco
   } // 모든 멤버 구현 이후에는 콤마 생략! 이 외 콤마 필수
 }
 
@@ -43,7 +43,7 @@ dog.greet();
 // : 객체명에 []첨부하여 ''안에 키 값을 문자열로 전달
 console.log(dog['age']); // 3
 console.log(dog['name']); // { last: 'choco', first: 'coco' }
-dog['bark']; // 함수 접근 (호출 X)
+dog['bark'];   // 함수 접근 (호출 X)
 dog['bark'](); // 함수 호출 // 멍멍
 
 // +) 객체 프로퍼티에 속성 추가
