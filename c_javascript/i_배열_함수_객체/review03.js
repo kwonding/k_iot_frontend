@@ -85,7 +85,7 @@ class Library {
   displayBook() {
     console.log('=== Library ===');
     this.books.forEach(book => {
-      console.log(`${book.id}: ${book.title} by ${book.author} - ${book.isAvailable ? '대여가능' : '대여 불가'}`);
+      console.log(`${book.id}: ${book.title} by ${book.author} - ${book.isAvailable ? '대여 가능' : '대여 불가'}`);
     })
   }
 
@@ -160,6 +160,64 @@ class Library {
       console.log('해당 책을 찾을 수 없습니다.');
     }
   }
+
+  // == 추가 기능 구현 == //
+  // [필터링] 저자별 도서 필터링
+  filterBooksByAuthor(author) {
+    // 일치하는 저자를 필터링
+    // >> 전체 목록 순회 + 각 데이터의 author값과 매개변수의 author값이 일치하는 경우 새로운 배열로 반환
+    // >> 해당 배열 전체 출력
+    //    : filter + forEach
+
+    // cf) 검색 값은 대소문자 구별 X: toLowerCase()로 두 값의 형태를 일치시킬 것!
+    const filtered = this.books.filter(book => book.author.toLowerCase() === author.toLowerCase());
+
+    console.log(`===${author}의 책 목록===`);
+    filtered.forEach(book => {
+      console.log(`${book.id}: ${book.title} - ${book.isAvailable ? '대여 가능' : '대여 불가'}`);
+  });
+
+    return filtered;
+  }
+
+  // [필터링] 제목 키워드로 도서 검색
+  filteredBooksByTitle(keyword) {
+    // 포함되는 제목을 필터링
+    // >> 전체 목록 순회 + 각 데이터의 title 값에
+    //      , 매개변수의 keyword 값이 포함(includes)된 경우 새로운 배열로 반환
+    // >> 해당 배열 전체 출력
+    //    : filter + forEach
+    const filtered = this.books.filter(book => book.title.toLowerCase().includes(keyword.toLowerCase()));
+
+    console.log(`=== 제목에 ${keyword}이(가) 포함된 책 목록 ===`);
+    filtered.forEach(book => {
+      console.log(`${book.id}: ${book.title} - ${book.isAvailable ? '대여 가능' : '대여 불가'}`);
+    });
+
+    return filtered;
+  }
+
+  // [필터링] 대여 가능 여부 도서 필터링
+  filterBooksByAvailable(isAvailable) {
+    // +) isAvailable 값에 따라 true면 출력 시 ${대여 가능}인 책 목록
+    //         , false면 출력 시 ${대여 중}인 책 목록
+    const status = isAvailable ? '대여 가능' : '대여 불가';
+    const filtered = this.books.filter(book => book.isAvailable === isAvailable);
+
+    console.log(`=== ${status}인 책 목록 ===`);
+    filtered.forEach(book => {
+      console.log(`${book.id}: ${book.title} by ${book.author}`);
+    });
+  }
+
+  // [통계] 대여 가능 도서 수 집계
+  countAvailableBooks() {
+    // isAvailable이 true인 데이터만 추출하여 해당 배열의 길이를 측정
+    // >> isAvailable의 변수를 통해 내부의 boolean값을 조건으로 사용
+    const count = this.books.filter(book => book.isAvailable).length;
+    console.log(`총 ${count}권의 책이 대여 가능합니다.`);
+    return count;
+  }
 }
 
 //! 3. 프로젝트 실행
@@ -180,3 +238,24 @@ busanLibrary.updateBook(1, "Java is fun", null);
 
 busanLibrary.removeBook(1);
 busanLibrary.displayBook();
+
+// == 양산 도서관 ==
+const yangsanLibrary = new Library();
+
+yangsanLibrary.addBook('자바스크립트 공부는 재밌어', '권지애');
+yangsanLibrary.addBook('SQLD 공부는 재밌어', '가가가');
+yangsanLibrary.addBook('타입스크립트 공부는 재밌어', '나나나');
+yangsanLibrary.addBook('자바 공부는 재밌어', '다다다');
+yangsanLibrary.addBook('리액트 공부는 재밌어', '라라라');
+
+yangsanLibrary.displayBook();
+
+yangsanLibrary.filterBooksByAuthor('가가가');
+yangsanLibrary.filteredBooksByTitle('SQLD');
+
+yangsanLibrary.rentBook(1);
+yangsanLibrary.rentBook(3);
+yangsanLibrary.filterBooksByAvailable(true);
+yangsanLibrary.filterBooksByAvailable(false);
+
+yangsanLibrary.countAvailableBooks();
