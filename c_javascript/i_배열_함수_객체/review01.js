@@ -101,7 +101,7 @@ function toggleTodo(id) {
 function deleteTodo(id) {
   const idx = todos.findIndex(todo => todo.id === id); // 삭제할 요소의 인덱스 번호를 반환받음
   if (idx === -1) {
-    console.log(`id ${id}는 없습니다.`);
+    console.log(`id ${id}가 없습니다.`);
     return; // 함수 종료
   }
 
@@ -169,3 +169,5 @@ toggleTodo(5);
 deleteTodo(2);
 emptyWastebasket();
 restoreTodo(2);
+
+deleteTodo(3);
