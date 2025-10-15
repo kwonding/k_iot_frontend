@@ -61,7 +61,7 @@ anyArray.forEach(function(value, index, array) {
 // 3번째 요소: true
 // 4번째 요소: 1,2,3
 
-// === map() === //
+// === map() === // -- 특정 항목만 수정하고 싶을 시 사용
 // - 각 요소에 대해 동일한 함수 실행 후 '새로운 배열을 생성하여 반환'
 console.log("=== map() ===");
 console.log(numbers); // [ 23, 41, 19, 7, 36 ]
@@ -81,7 +81,7 @@ const arrowNumbers = numbers.map(value => value * value);
 console.log(newNumbers); // [ 529, 1681, 361, 49, 1296 ]
 console.log(arrowNumbers); // [ 529, 1681, 361, 49, 1296 ]
 
-// === filter() === //
+// === filter() === // -- 조건에 맞는 요소만 남기고 나머지는 다 버림(삭제)
 // - 각 요소에 대해 동일한 함수 실행 후
 //    , '콜백 함수의 리턴값이 true인 요소만 모아서 새로운 배열을 생성하여 반환'
 console.log('=== filter() ===');

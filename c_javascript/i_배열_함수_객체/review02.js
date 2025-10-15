@@ -64,7 +64,7 @@ function displayCart() {
   })
 }
 
-//? 3. 특정 상품의 수량을 변경
+//? 3. 특정 상품의 수량을 변경(Update)
 function updateQuantity(id, quantity) {
   const idx = cart.findIndex(item => item.id === id);
 
