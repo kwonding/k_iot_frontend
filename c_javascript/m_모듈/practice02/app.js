@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
   form.addEventListener('submit', (e) => {
     // type="submit" 버튼 클릭 시 이벤트 발생
     // form 요소에서 submit 이벤트 발생 시 '기본 제출 이벤트를 방지'
+    // form의 기본 동작 - 서버로 전송 + 새로고침
     e.preventDefault();
 
     // form 내부 input의 데이터를 할 일 목록에 추가
@@ -28,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (text !== '') {
       // 텍스트가 비워져있지 않다면
       todoManager.addTodo(text);
-      input.value = '';
+      input.value = ''; // input창 초기화 시키기
       updateTodoList(); // 리스트 업데이트
     }
   });
@@ -38,26 +39,26 @@ document.addEventListener('DOMContentLoaded', () => {
     // 모든 할 일 목록을 가져오기
     const todos = todoManager.getTodos();
 
-    // ul 태그 내부의 데이터(내용) 삭제
+    // ul 태그 내부의 데이터(내용) 삭제 - 기존에 화면에 있던 ul 안의 li 싹 지움 (안그러면 중복으로 쌓임)
     // HTML요소.innerHTML = '';
     // : 요소 내부의 전체 HTML 코드를 문자열로 반환
     todoList.innerHTML = '';
 
     todos.forEach(todo => {
       // 태그에 사용될 텍스트 전달
-      const li = document.createElement('li');
-      li.textContent = todo.text;
+      const li = document.createElement('li'); // 새로운 li 요소 만듦
+      li.textContent = todo.text; // 할 일 텍스트 넣기
 
       // 순회되는 요소의 완료 여부에 따라 completed 클래스 사용
-      if (todo.completed) {
-        li.classList.add('completed');
+      if (todo.completed) { // true
+        li.classList.add('completed'); // css .completed
       } else {
         li.classList.remove('completed');
       }
 
       li.addEventListener('click', () => {
         todoManager.toggleCompleted(todo.id);
-        updateTodoList;
+        updateTodoList();
       });
     
       // 삭제 버튼 생성
@@ -66,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
       deleteButton.classList.add('delete-button');
 
       deleteButton.addEventListener('click', (e) => {
-        e.stopPropagation(); // 부모(li) 클릭 이벤트 방지
+        e.stopPropagation(); // 부모(li) 클릭 이벤트 방지 - li.addEventListener('click', () => {todoManager.toggleCompleted(todo.id); updateTodoList();})
         todoManager.removeTodo(todo.id);
         updateTodoList();
       });
