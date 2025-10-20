@@ -42,12 +42,12 @@ export class TodoManager {
 
     if (todo) {
       // =(할당 연산자)는 우항에서 좌항으로 계산
-      todo.completed = !todo.completed;
+      todo.completed = !todo.completed; // 현재 상태 반전시킴
     }
   }
 
   // 3) 특정 할 일 항목을 제거
-  // : 특정 todo 제외하고 남김 // 즉, 해당 todo를 삭제
+  // : 삭제할 특정 todo 제외하고 남김처리 == 즉, 해당 todo를 삭제
   removeTodo(id) {
     this.todos = this.todos.filter(todo => todo.id !== id);
   }
