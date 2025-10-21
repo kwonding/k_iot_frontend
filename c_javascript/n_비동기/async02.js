@@ -51,17 +51,17 @@ console.log('메인 로직 - 중단되지 않고 실행!');
 //! 콜백 함수를 비동기에서 사용할 경우 "단점"
 // : 함수가 중첩된 형식이 이어짐 - 가독성 떨어짐
 
-function a() {
+function a() { // 정의
   console.log('a');
-  function b() {
+  function b() { // 정의
     console.log('b');
-    function c() {
+    function c() { // 정의
       console.log('c');
       // ...
     }
   }
 }
 
-a();
+a(); // 실행
 // >> 콜백 지옥 (callback hell)
 //    : Promise 또는 Async/Await을 통해 콜백 지옥 방지!
