@@ -56,7 +56,7 @@ let date = new Date();
 // 1s === 1000ms
 // date.setTime(date.getTime() + (24 * 60 * 60 * 1000))
 // >> 24시간 (1일)
-date.setTime(date.getTime() + (1 * 60 * 1000)); // 10분
+date.setTime(date.getTime() + (10 * 60 * 1000)); // 10분
 
 let expires = "expires=" + date.toUTCString()
 // : 시간을 협정 세계시 문자열로 반환
