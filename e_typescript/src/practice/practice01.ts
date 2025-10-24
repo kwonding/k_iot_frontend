@@ -84,12 +84,20 @@ type Person2 = {
 
 type Employee = Person2 & ContactDetails;
 
+let employee: Employee = {
+  name: '권지애',
+  age: 30,
+  email: 'qwe123',
+  phone: '010-1234-1234'
+}
+
 //! 문제 2: 함수 반환 타입으로 Intersection 사용
 // - Vehicle 타입과 Engine 타입을 결합하여 Car 타입 생성
 // - createCar 함수를 구현하여, 주어진 Vehicle과 Engine 정보를 받아 Car 객체를 반환하도록 구현
 
 type Vehicle = {
-  sort: string;
+  make: string;
+  model: string;
 }
 
 type Engine = {
@@ -98,14 +106,18 @@ type Engine = {
 
 type VehicleEngine = Vehicle & Engine;
 
-function createCar(c: Engine): Vehicle {
-  return {...c, sort: 'Car'};
+function createCar(vehicle: Vehicle, engine: Engine): VehicleEngine {
+  return {...vehicle, ...engine};
 }
 
-let car: Engine = {
-  type: 'gasoline'
+let car: Vehicle = {
+  make: 'kia',
+  model: 'k8'
 }
 
-let car1 = createCar(car);
+let engine: Engine = {
+  type: '하이브리드'
+}
 
-console.log(car1);
+let newCar = createCar(car, engine);
+console.log(newCar);
