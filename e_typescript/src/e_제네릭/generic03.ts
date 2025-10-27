@@ -56,7 +56,7 @@ function updateUser(id: number, changes: Partial<User>) {
 
   if (!user) {
     console.log('해당 id의 사용자는 없습니다.');
-    return;
+    return; // 없으면 존재하지 않는 user 즉, 68번 계속 반복 시도함 - 잘못된 데이터 일 때 함수 종료 시켜!
   }
 
   // changes 매개변수: name과 age 속성 모두 선택적 프로퍼티
@@ -77,7 +77,7 @@ console.log(users[1]); // { name: '정은혜', age: 25 }
 updateUser(2, {age: 15});
 console.log(users[2]); // { name: '김지선', age: 15 }
 
-updateUser(1, {});
+updateUser(1, {}); // 바꾸는 거 X
 console.log(users[1]); // { name: '정은혜', age: 25 }
 
 //& 2) Readonly
@@ -137,3 +137,5 @@ const generalA: EmployeeForGeneral = {
   age: 30,
   position: '사원'
 }
+
+console.log(salaryA, generalA); // { id: 1, name: '권지애', age: 30, position: '사원', phone: '010-1234-1234' }  { id: 1, name: '권지애', age: 30, position: '사원' }
