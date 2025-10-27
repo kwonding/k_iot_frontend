@@ -50,7 +50,7 @@ class TaskManager<T> {
     taskList.innerHTML = ''; // 내용물 새로 받기 위해 기존 내용 지움
 
     this.tasks.forEach(task => {
-      const li = document.createElement('li');
+      const li = document.createElement('li'); // 새로 li 만들어서 추가
 
       li.textContent = `${task.task}`;
 
