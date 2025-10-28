@@ -69,7 +69,7 @@ var createUserCard = function (user) {
     userCard.dataset.userId = user.id.toString();
     // data-userId="user.id값"; 속성 전달
     userCard.innerHTML = "\n    <h2>".concat(user.name, "</h2>\n    <p><strong>Username: </strong>").concat(user.username, "</p>\n    <p><strong>Email: </strong>").concat(user.email, "</p>\n  ");
-    return userCard;
+    return userCard; // 만들기만 함
 };
 //@ 3. 사용자 정보 배열을 받아 화면에 표시하는 함수
 // : createUserCard에 각 객체 전달
@@ -79,7 +79,7 @@ var displayUsers = function (users) {
         userList.innerHTML = '';
         users.forEach(function (user) {
             var userCard = createUserCard(user);
-            userList.appendChild(userCard);
+            userList.appendChild(userCard); // 2번에서 만든 것 부모요소 안에 추가
         });
     }
 };
