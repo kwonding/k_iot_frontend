@@ -11,7 +11,7 @@ var TaskLogger = /** @class */ (function () {
         var newTask = {
             // 현재 카운터 값으로 ID 지정 후 증가
             id: this.taskIdCounter++,
-            description: description, // 매개변수로 쓰인 변수명은 자동으로 key 그리고  그 내용물이 value가 됨
+            description: description, // 매개변수로 쓰인 변수명은 자동으로 key 그리고 그 내용물이 value가 됨
             timestamp: new Date()
         };
         this.tasks.push(newTask);
@@ -26,7 +26,7 @@ var TaskLogger = /** @class */ (function () {
     TaskLogger.prototype.createTaskElement = function (task) {
         var taskItem = document.createElement('div');
         taskItem.className = 'task-item';
-        taskItem.innerHTML = "\n      <span>".concat(task.description, " - ").concat(task.timestamp.toLocaleString(), "</span>\n      <button data-task-id=").concat(task.id, ">Delete</button>\n    ");
+        taskItem.innerHTML = "\n      <span>".concat(task.description, " (").concat(task.timestamp.toLocaleString(), ")</span>\n      <button data-task-id=").concat(task.id, ">Delete</button>\n    ");
         return taskItem;
     };
     TaskLogger.prototype.renderTasks = function () {

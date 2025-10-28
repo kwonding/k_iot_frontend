@@ -20,7 +20,7 @@ class TaskLogger {
     const newTask: Task = {
       // 현재 카운터 값으로 ID 지정 후 증가
       id: this.taskIdCounter++,
-      description, // 매개변수로 쓰인 변수명은 자동으로 key 그리고  그 내용물이 value가 됨
+      description, // 매개변수로 쓰인 변수명은 자동으로 key 그리고 그 내용물이 value가 됨
       timestamp: new Date()
     }
 
@@ -40,9 +40,9 @@ class TaskLogger {
     taskItem.className = 'task-item';
 
     taskItem.innerHTML = `
-      <span>${task.description} - ${task.timestamp.toLocaleString()}</span>
+      <span>${task.description} (${task.timestamp.toLocaleString()})</span>
       <button data-task-id=${task.id}>Delete</button>
-    `;
+    `; // toLocaleString() - 사람이 읽기 쉬운 형식으로 변환해주기 위함
 
     return taskItem;
   }
