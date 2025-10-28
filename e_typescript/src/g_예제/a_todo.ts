@@ -36,6 +36,7 @@ function addTodo(todos: TodoItem[], task: string): TodoItem[] {
     // Math.max()
     // : 인자로 주어진 숫자 중에서 가장 큰 수를 반환
     // - 인자 내에 배열이 있는 경우 배열 요소 중 가장 큰 값을 반환
+    // - 배열을 그대로 넣을 수 없어서 펼쳐주는 스프레드연산자 사용
 
     // todos.map(todo => todo.id)
     /*
@@ -50,6 +51,7 @@ function addTodo(todos: TodoItem[], task: string): TodoItem[] {
     id: Math.max(0, ...todos.map(todo => todo.id)) + 1,
         // Math.max(0, 1, 2, 4)
         // : 4 반환
+        // 0은 배열이 비어있을 때를 대비한 기본값
 
     task: task,
     completed: false
