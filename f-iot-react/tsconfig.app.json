@@ -28,5 +28,5 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true
   },
-  "include": ["src", "../e_typescript/src/main.js", "../e_typescript/src/main.ts"]
+  "include": ["src"]
 }
