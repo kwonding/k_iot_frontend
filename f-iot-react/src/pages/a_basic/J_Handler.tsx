@@ -9,7 +9,8 @@ import React from 'react'
 //! 이벤트 등록 방법
 // 1) 함수 이름 전달
 // : <button onClick={handleButtonClick}></button>
-// 2) 익명 함수
+// 호출아니고 전달임 onClick={onButtonClick()};(X) - 즉시실행됨
+// 2) 익명 함수 // 메서드임
 // : <button onClick={() => console.log('클릭')}></button>
 
 //? 함수 호출 X: 호출 시 즉시 실행
@@ -51,7 +52,6 @@ function ConsoleButton({message , children}: ConsoleProps) {
 }
 
 //@ 부모 컴포넌트
-
 function J_Handler() {
   //# Hooks //
   // hook 코드 나열 

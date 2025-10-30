@@ -97,7 +97,7 @@ function G_Props() {
       <MultiProps2 colorProps='lightgreen' />
 
       {/* ...props가 구조 분해 할당을 사용하여 각각의 속성명을 찾아감 */}
-      <MultiProps2 {...props} />
+      <MultiProps2 {...props} /> // 객체의 속성을 spread해서 key/value를 props형태로 전달
     </Wrapper>
   )
 }

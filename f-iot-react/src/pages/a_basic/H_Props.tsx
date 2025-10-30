@@ -13,11 +13,11 @@ type User = {
 type UserCardProps = { user: User }; // 객체가 객체로 감싸짐
 
 // 구조 분해 할당
-const UserCard = ({ user }: UserCardProps) => {
+const UserCard = ({ user }: UserCardProps) => { // props.user를 구조분해로 바로 받음
   console.log(user.name);
   console.log(user.age);
 
-  const { name, age, email } = user;
+  const { name, age, email } = user; // user 내부의 속성 꺼내기
 
   console.log(name);
   console.log(age);
