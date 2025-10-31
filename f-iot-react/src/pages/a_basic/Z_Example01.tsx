@@ -53,7 +53,6 @@ function Z_Example01() {
     return <GreetingCard name={user.name} message={user.message} />
   })
 
-
   return (
     <div>{userList}</div>
   )
