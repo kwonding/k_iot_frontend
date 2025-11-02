@@ -1,6 +1,6 @@
 import React from 'react'
 // import B_React_Counter from './B_React_Counter'; // 상대경로
-import B_React_Counter from '@/pages/a_basic/B_React_Counter'; // 절대경로
+// import B_React_Counter from '@/pages/a_basic/B_React_Counter'; // 절대경로
 
 /*
 ! 컴포넌트(Component)
