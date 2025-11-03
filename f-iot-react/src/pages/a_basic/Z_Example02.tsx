@@ -35,7 +35,7 @@ import React from 'react'
 interface Todo {
   id: number;
   text: string;
-  isdone: boolean;
+  done: boolean;
 }
 
 interface TodoItemProps{
@@ -47,24 +47,39 @@ interface TodoBoardProps {
 }
 
 function TodoItem({todo}: TodoItemProps) {
-  if (todo.isdone) {
+  if (todo.done) {
     return (
-      <p key={todo.id}>{todo.isdone ? "👉" + todo.text : todo.text}</p>
+      <p key={todo.id}>{todo.done ? "👉" + todo.text : todo.text}</p>
+    )
+  }
+}
+
+function TodoBoard({todos}: TodoBoardProps) {
+  if (todos.length > 0) {
+    return (
+      <div>
+        <p>
+          {(todos.length === 0) ? '할 일이 없습니다.' 
+          : '완료' + (todos.filter(todo => todo.done === true)).length
+          + '/ 전체: ' + (todos.filter(todo => !todo.done)).length}
+          </p>
+      </div>
     )
   }
 }
 
 //@ Z_Example02 컴포넌트 (데이터 정의 및 전달)
 function Z_Example02() {
-  // const todos: Todo[] = [
-  //   { id: 1, text: "React 문법 복습", done: true },
-  //   { id: 2, text: "Props 이해하기", done: false },
-  //   { id: 3, text: "조건부 렌더링 연습하기", done: false }
-  // ]
+  const todos: Todo[] = [
+    { id: 1, text: "React 문법 복습", done: true },
+    { id: 2, text: "Props 이해하기", done: false },
+    { id: 3, text: "조건부 렌더링 연습하기", done: false }
+  ]
 
   return (
     <div style={{ marginTop: '10px', padding: "20px", border: '1px dashed black' }}>
       {/* == TodoBoard 사용 (props 전달) == */}
+      <TodoBoard todos={todos} />
     </div>
   )
 }
