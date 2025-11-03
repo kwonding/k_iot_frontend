@@ -15,13 +15,13 @@ const loginInitialValue: Login = {
 
 function State02() {
   //^ === HOOKS (useState) === //
-  const [inputValue, setInputValue] = useState<string>('');
+  const [inputValue, setInputValue] = useState<string>(''); // 구조 분해 할당 - 배열 분해
 
   // const [id, setId] = useState<string>('');
   // const [password, setPassword] = useState<string>('');
   const [login, setLogin] = useState<Login>(loginInitialValue);
 
-  const {id, password} = login; // 구조 분해 할당
+  const {id, password} = login; // 구조 분해 할당 - 객체 분해
 
   //^ === EVENT HANDLER === //
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => { // React에서 일어남, Change이벤트임, Input, Select에서도 사용가능
