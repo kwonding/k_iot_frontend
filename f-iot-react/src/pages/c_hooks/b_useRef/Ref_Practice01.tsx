@@ -3,14 +3,14 @@ import React, { useEffect, useRef } from "react";
 //! 예제 1) 포커스 제어 (input 자동 포커스)
 // : 회원가입, 로그인, 검색창에서 "렌더링 후" 포커스 주기
 
-function Practice01() {
+function Ref_Practice01() {
   //^ === Hooks === //
   const inputRef = useRef<HTMLInputElement>(null);
 
   //? 처음 렌더링 될 때 콜백함수의 기능을 딱 한 번만 실행
-  useEffect(() => {
-    inputRef.current?.focus();
-  }, []);
+  // useEffect(() => {
+  //   inputRef.current?.focus();
+  // }, []);
 
   //^ === Event Handler === //
   const handleLogin = () => {
@@ -32,4 +32,4 @@ function Practice01() {
   );
 }
 
-export default Practice01;
+export default Ref_Practice01;

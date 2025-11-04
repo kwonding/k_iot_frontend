@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 
 //! 예제 2) DOM 요소 제어 (스크롤 이동)
 
-function Practice02() {
+function Ref_Practice02() {
   //^ === Hooks === //
   const [messages, setMessages] = useState<string[]>([
     "메시지 1",
@@ -21,11 +21,11 @@ function Practice02() {
   // const messages = Array.from({ length: 15 }, (_, i) => `메시지 ${i + 1}`);
 
   //? messages 값이 갱신될 때마다 콜백 함수 실행
-  useEffect(() => {
-    // behavior 속성: 이동 효과를 설정
-    // block 속성: 스크롤 맞춤 설정 (end: 하단 맞춤, center: 중앙 맞춤)
-    messageEndRef.current?.scrollIntoView({ behavior: "smooth", block: 'center' });
-  }, [messages]);
+  // useEffect(() => {
+  //   // behavior 속성: 이동 효과를 설정
+  //   // block 속성: 스크롤 맞춤 설정 (end: 하단 맞춤, center: 중앙 맞춤)
+  //   messageEndRef.current?.scrollIntoView({ behavior: "smooth", block: 'center' });
+  // }, [messages]);
 
   // 메시지 1 ~ 메시지 15의 유사 배열을 실제 배열로 변환
   //^ === Event Handler === //
@@ -56,4 +56,4 @@ function Practice02() {
   );
 }
 
-export default Practice02;
+export default Ref_Practice02;
