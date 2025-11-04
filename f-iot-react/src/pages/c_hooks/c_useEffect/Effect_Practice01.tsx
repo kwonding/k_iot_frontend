@@ -79,8 +79,7 @@ function Effect_Practice01() {
       // > slice(시작 인덱스, 끝 인덱스)까지의 얕은 복사본을 새로운 배열로 반환
       const mappedData: Reservation[] = data
         .slice(0, 5)
-        .map((item: any, idx: number) => ({
-          // Reservation[]타입의 객체를 반환할 것임
+        .map((item: any, idx: number) => ({// Reservation[]타입의 객체를 반환 소괄호를 쓰지않으면 함수 실행 블록이라고 인식함 -> 소괄호 사용으로 객체임을 명시
           id: item.id, // mock id
           customer_name: item.name, // mock 사용자 이름
           truck_name: `Truck-${idx + 1}`, // 트럭 이름 예시
