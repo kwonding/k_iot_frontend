@@ -11,7 +11,7 @@ import React, { useMemo, useState } from "react";
     @ 연산할 코드
 
     return 계산 결과;
-  }, =[의존성 배열, deps])
+  }, [의존성 배열, deps])
 
 
 */
@@ -38,7 +38,7 @@ function B_UseMemo() {
       <p>Count: {count}</p>
       <button onClick={() => setCount((prev) => prev + 1)}>증가</button>
       {/* <p>Result(Count + 100): {expensiveCalc(count)}</p> */}
-      <p>Result(Count + 100): {memoizedResult}</p> // 입력창은 빠르게 작성 가능
+      <p>Result(Count + 100): {memoizedResult}</p> {/* 입력창은 빠르게 작성 가능 */}
 
       <br />
       <input

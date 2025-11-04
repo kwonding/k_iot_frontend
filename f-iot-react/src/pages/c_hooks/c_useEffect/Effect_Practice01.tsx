@@ -80,6 +80,7 @@ function Effect_Practice01() {
       const mappedData: Reservation[] = data
         .slice(0, 5)
         .map((item: any, idx: number) => ({// Reservation[]타입의 객체를 반환 소괄호를 쓰지않으면 함수 실행 블록이라고 인식함 -> 소괄호 사용으로 객체임을 명시
+          // .map((요소, 인덱스, 원본배열) => {});
           id: item.id, // mock id
           customer_name: item.name, // mock 사용자 이름
           truck_name: `Truck-${idx + 1}`, // 트럭 이름 예시

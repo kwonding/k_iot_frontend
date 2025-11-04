@@ -17,11 +17,16 @@ import React, { memo, useCallback, useState } from "react";
 //! 자식 컴포넌트: 부모로부터 함수 전달
 //? React.memo
 // : React에서 불필요한 자식 컴포넌트의 리렌더링을 방지하기 위한 성능 최적화 도구
-// > 이전 렌저링 때의 props와 지금 렌더링 때의 props를 비교
+// > 이전 렌더링 때의 props와 지금 렌더링 때의 props를 비교
 //    : 동일하면 다시 렌더링하지 않음 (스킵)
 //    : 다르며 재렌더링 수행
 const Button = memo(({ handleClick }: { handleClick: () => void }) => {
+  // 컴포넌트 이름은 Button
+  // {handleClick} : props.handleClick 이라는 속성이 있다고 가정하고 그걸 꺼내서 씀
+  // {handleClick: () => void} : handleClick이라는 속성을 가진 객체이고 이는 () => void 타입(인자도없고 반환값도 없는 함수)
   console.log("버튼이 렌더링되었습니다.");
+
+  // Button 컴포넌트가 JSX를 반환
   return <button onClick={handleClick}>자식 컴포넌트의 버튼</button>;
 });
 
@@ -49,7 +54,7 @@ function A_UseCallback() {
   const handleCountClick = useCallback(() => {
     console.log("이벤트 발생");
     setCount((prevCount) => prevCount + 1);
-  }, [text]);
+  }, [text]); // text가 바뀌지 않는 한, handleCountClick 함수는 그대로, 자식은 리렌더링 안 됨
 
   console.log("부모 렌더링!");
 
