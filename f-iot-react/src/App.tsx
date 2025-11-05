@@ -4,8 +4,9 @@ import Basic from '@/pages/a_basic';
 import RoutePages from '@/pages/b_Route';
 import Hooks from '@/pages/c_hooks';
 import Navibar from './components/Navibar';
-import PostList from './_practice/a_basic/PostList';
+import PostList from './pages/_practices/a_basic/PostList';
 import PostDetail from './components/PostDetail';
+import SearchApp from './pages/_practices/c_hooks/SearchApp';
 
 function App() {
 
@@ -27,8 +28,10 @@ function App() {
 
       <Route path='/hooks' element={<Hooks />} />
 
+      {/* //@ _practices 실습 코드 */}
       <Route path='/practice/post' element={<PostList />} />
       <Route path='/practice/post/:id' element={<PostDetail />} />
+      <Route path='/practice/search' element={<SearchApp />} />
 
     </Routes>
     </>
