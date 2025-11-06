@@ -12,6 +12,7 @@ import Z_ProductDetail from './pages/b_Route/Z_ProductDetail';
 import Z_ProductInfo from './pages/b_Route/Z_ProductInfo';
 import Z_ProductReviews from './pages/b_Route/Z_ProductReviews';
 import Z_Dashboard from './pages/b_Route/Z_Dashboard';
+import HTTP from '@/pages/d_http';
 
 function App() {
 
@@ -30,8 +31,8 @@ function App() {
         - 중첩된 자식 라우트 인식
       */}
       <Route path='/route/*' element={<RoutePages />}/>
-
       <Route path='/hooks' element={<Hooks />} />
+      <Route path='/http' element={<HTTP />} />
 
       {/* //@ _practices 실습 코드 */}
       <Route path='/practice/post' element={<PostList />} />
