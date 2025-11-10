@@ -1,3 +1,4 @@
+import { userAuthStore } from '@/stores/auth.store';
 import React from 'react'
 import { create } from 'zustand';
 
@@ -62,12 +63,19 @@ function B_Zustand() {
   // : 구조 분해 할당을 사용하여
   //   전역 상태 변수값, 전역 상태 설정 함수 할당
   const { count, increment, decrement } = useCountStore();
+  const {user, logout} = userAuthStore();
 
   return (
     <div>
       <p>Count: {count}</p>
       <button onClick={increment}>증가</button>
       <button onClick={decrement}>감소</button>
+      {user && (
+        <p>
+          {user.loginId}님 환영합니다.
+          <button onClick={logout}>로그아웃</button>
+        </p>
+      )}
     </div>
   )
 }

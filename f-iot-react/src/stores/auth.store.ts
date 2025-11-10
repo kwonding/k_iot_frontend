@@ -1,6 +1,8 @@
 // 인증 객체 처리
 
-import { create } from "zustand";
+import { signIn } from "@/apis/authApi";
+import { create  } from "zustand";
+import type { PersistOptions } from "zustand/middleware";
 import { devtools, persist } from "zustand/middleware";
 
 // 전역 상태 관리 될 사용자 데이터
@@ -38,35 +40,115 @@ export interface AuthState {
 //? set 설정 함수
 //? get 함수
 
-//? 미들웨어
-// 1) devtools
+//? Zustand 미들웨어
+// 1) devtools(디버깅 툴 연동)
 // : React 상태 관리 라이브러리에서 브라우저 개발자 도구와 연결해주는 역할
 // - dispatch되는 액션을 가로채서 개발자 도구에 상태 변화를 기록 + 상태 추적
 //    > 디버깅 용이
 
-// 2) persist
+// 2) persist(로컬스토리지 저장)
 // : 상태를 지정된 스토리지에 저장하고, 앱이 다시 로드될 때 이 저장소에서 상태를 복원
 
-const enhancers = (f: any) => {
-  const persistOptions = {
-    name: 'app-storage', // 로컬 스토리지 키 이름
-  }
+// const withEnhancers = <T>(
+//   // set) 상태를 업데이트하는 함수
+//   // get) 현재 상태를 읽는 함수
+//   storeCreator: StateCreator<T>, //^ set, get 가져와서 객체 반환
+//   options?: PersistOptions<T> //^ persist에서 데이터를 복원할 장소 명시
+// ) => {
+//   const persistoptions = options ?? {name: 'app-storage'};
+//   return import.meta.env.MODE === 'production'
+//   //@ persist(): 상태를 저장소에 자동 저장/복원하는 미들웨어
+//   ? persist(storeCreator, persistoptions)
+//   //@ devtools(): 상태 변화를  개발자 도구에서 추적하도록 도와주는 미들웨어
+//   : devtools(persist(storeCreator, persistoptions));
+// }
 
-  return import.meta.env.MODE === 'production'
-  ? persist(f, persistOptions)
-  : devtools(persist(f, persistOptions));
-} 
+// >> persist나 devtools로 로직을 감싸면 내부 제네릭이 변경
+//    : 타입 명시가 없으면 타입 에러 발생
 
-export const useAuthStore = create<AuthState>(
-  enhancers((set, get) => ({
+// export const useAuthStore = create<AuthState>()(
+//   withEnhancers((set, get) => ({
+//     // 초기 상태 명시
+//     user: null,
+//     accessToken: null,
+//     isLoading: false,
+//     error: null,
+
+//     // -- 액션 정의
+//     setUser: (u) => set({user: u}),
+//     setAccessToken: (token) => set({ accessToken: token }),
+//     login: async (loginId, password) => {
+//       set({ isLoading: true, error: null });
+//       try {
+//         const data = await signIn({loginId, password});
+//         set({
+//           user: {id: 1, loginId: data.username },
+//           accessToken: data.accessToken,
+//           isLoading: false
+//         });
+//       } catch (e) {
+//         set({
+//           isLoading: false,
+//           error: (e as Error).message ?? "로그인 실패",
+//         })
+//       }
+//     },
+//     logout: () => {
+//       set({
+//         user: null,
+//         accessToken: null
+//       });
+//     },
+//     refreshToken: async () => {
+//       try {
+//         const newToken = 'refreshed-token';
+//         set({accessToken: newToken});
+//       } catch (e) {
+//         set({error: (e as Error).message})
+//       }
+//     },
+//   }))
+// );
+export const userAuthStore = create<AuthState>(
+  set => ({
+    // 초기 상태 명시
     user: null,
     accessToken: null,
     isLoading: false,
     error: null,
 
-    login,
-    logout,
+    // -- 액션 정의
     setUser: (u) => set({user: u}),
-    setAccessToken,
-    refreshToken,
-  })));
+    setAccessToken: (token) => set({ accessToken: token }),
+    login: async (loginId, password) => {
+      set({ isLoading: true, error: null });
+      try {
+        const data = await signIn({loginId, password});
+        set({
+          user: {id: 1, loginId: data.username },
+          accessToken: data.accessToken,
+          isLoading: false
+        });
+      } catch (e) {
+        set({
+          isLoading: false,
+          error: (e as Error).message ?? "로그인 실패",
+        })
+      }
+    },
+    logout: () => {
+      set({
+        user: null,
+        accessToken: null
+      });
+    },
+    refreshToken: async () => {
+      try {
+        const newToken = 'refreshed-token';
+        set({accessToken: newToken});
+      } catch (e) {
+        set({error: (e as Error).message})
+      }
+    },
+  })
+);

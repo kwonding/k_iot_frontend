@@ -72,10 +72,13 @@ const UserContext = createContext<UserContextType | undefined>(undefined);
 //@ Provider 생성
 // : 해당 컴포넌트 내부의 자식 & 자손 컴포넌트는 useContext 훅을 통해 데이터 활용 가능
 const UserProvider = ({children}: {children: React.ReactNode}) => {
+  // React.ReactNode 
+  // : JSX에서 렌더링 가능한 모든 것 (문자열, 숫자, 요소, null 등)을 뜻하는 타입
+  // ex) <div>, <Header />, "문자열", null, [<a />, <b />] 전부 가능
   const [user, setUser] = useState<User | null>(null);
 
   return (
-    <UserContext.Provider value={{user, setUser}}>
+    <UserContext.Provider value={{user, setUser}}> // Context를 제공함
       {children}
     </ UserContext.Provider>
   );
@@ -83,7 +86,7 @@ const UserProvider = ({children}: {children: React.ReactNode}) => {
 
 //@ Consumer 생성
 const ExampleHeader = () => {
-  const userContext = useContext(UserContext);
+  const userContext = useContext(UserContext); // Provider에 접근
 
   if (!userContext) {
     throw new Error('UserContext가 UserProvider 내에서 사용되지 않음');
