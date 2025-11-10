@@ -7,9 +7,10 @@ interface Props {
 
 function C_ArticleDetail({ articleId }: Props) {
   const [article, setArticle] = useState<ArticleDetailResponse | null>(null);
+  // 처음에는 article 데이터가 없을 수도 있음 - null
   const [loading, setLoading] = useState<boolean>(false);
 
-  const fetchArticleDetail = async () => {
+  const fetchArticleDetail = async () => { // 서버에 요청을 보내야 하기 때문에 비동기 처리
     try {
       setLoading(true);
       const data = await getArticleById(articleId);
@@ -22,8 +23,8 @@ function C_ArticleDetail({ articleId }: Props) {
   }
 
   useEffect(() => {
-    fetchArticleDetail();
-  }, [articleId]);
+    fetchArticleDetail(); // 실행할 코드
+  }, [articleId]); // 언제 실행?
 
   if (loading) return <p>불러오는 중...</p>
   if (!article) return <p>게시글 데이터를 불러올 수 없습니다.</p>

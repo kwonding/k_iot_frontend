@@ -40,7 +40,7 @@ export interface ArticleDetailResponse {
 export const getAllArticles = async () => {
   const res = await publicApi.get("/articles");
   // res.data: 실제 axios 결과값 (응답)
-  //? cf) ResponseDto.data 실제 데이터값
+  //? cf) ResponseDto.data 실제 데이터값 (IntelliJ)
   return res.data.data;
 }
 

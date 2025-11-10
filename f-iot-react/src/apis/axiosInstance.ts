@@ -33,6 +33,7 @@ export const privateApi = axios.create({
 //@ 요청 인터셉터 설정 (privateApi 만)
 // 매개변수: 타입 작성 필수
 privateApi.interceptors.request.use((config: InternalAxiosRequestConfig) => {
+  // 요청 인터셉터 단계에서 axios가 사용하는 요청 설정 객체 - InternalAxiosRequestConfig 타입
   const token = localStorage.getItem('accessToken');
   if (token && config.headers) {
     config.headers["Authorization"] = `Bearer ${token}`;
