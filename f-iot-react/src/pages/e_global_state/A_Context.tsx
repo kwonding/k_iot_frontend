@@ -77,8 +77,10 @@ const UserProvider = ({children}: {children: React.ReactNode}) => {
   // ex) <div>, <Header />, "문자열", null, [<a />, <b />] 전부 가능
   const [user, setUser] = useState<User | null>(null);
 
-  return (
-    <UserContext.Provider value={{user, setUser}}> // Context를 제공함
+  return ( 
+    // Context 제공
+    // : 아래(children)있는 컴포넌트들은 전부 내가 가진 value 값에 접근할 수 있게 해줘!
+    <UserContext.Provider value={{user, setUser}}> 
       {children}
     </ UserContext.Provider>
   );
