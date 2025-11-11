@@ -1,7 +1,7 @@
 // api.ts
 // : 서버와 통신하는 API 호출 관련 로직 정의 (코드 재사용 및 모듈화)
 
-import type { AxiosInstance, AxiosRequestConfig, InternalAxiosRequestConfig } from "axios";
+import type { AxiosInstance, InternalAxiosRequestConfig } from "axios";
 import axios from "axios";
 
 const API_BASE = import.meta.env.VITE_API_BASE || 'http://localhost:8080/api/v1';

@@ -1,20 +1,23 @@
-import { userAuthStore } from '@/stores/auth.store';
+import { useAuthStore } from '@/stores/auth.store';
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 function SignIn() {
-  const navigate = useNavigate();
-  const {login, isLoading, error, user} = userAuthStore();
-
+  //^ === Hooks ===
   const [loginId, setLoginId] = useState<string>('');
   const [password, setPassword] = useState<string>('');
 
+  const navigate = useNavigate();
+
+  const {login, isLoading, error} = useAuthStore();
+
+  //^ === Event Handler ===
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     await login(loginId, password);
 
     // 로그인 성공 시 홈으로 이동
-    if (userAuthStore.getState().user) {
+    if (useAuthStore.getState().user) {
       navigate('/');
     }
   }
