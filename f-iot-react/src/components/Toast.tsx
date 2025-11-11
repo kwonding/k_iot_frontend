@@ -27,13 +27,13 @@ function Toast() {
 
   useEffect(() => {
     if (toastMessage) {
-      const timer = setTimeout(hideToast, 10000);
+      const timer = setTimeout(hideToast, 10000); // setTimeout(함수, 시간, ...args?)
       return () => clearTimeout(timer);
     }
   }, [toastMessage, hideToast]);
 
   // 조건부 렌더링
-  if (!toastMessage) return null;
+  if (!toastMessage) return null; // 불필요한 DOM 렌더링 막기 위해서
 
   return (
     <div style={toastStyle}>
