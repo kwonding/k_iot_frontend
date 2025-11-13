@@ -3,24 +3,33 @@ import './App.css'
 import Basic from '@/pages/a_basic';
 import RoutePages from '@/pages/b_Route';
 import Hooks from '@/pages/c_hooks';
+
 import Navibar from './components/Navibar';
-import PostList from './pages/_practices/a_basic/PostList';
 import PostDetail from './components/PostDetail';
+import Header from './components/Header';
+import Sidebar from './components/Sidebar';
+import Toast from './components/Toast';
+
+import PostList from './pages/_practices/a_basic/PostList';
 import SearchApp from './pages/_practices/c_hooks/SearchApp';
+import Dashboard from './pages/_practices/d_emotion/Dashboard';
+import { darkTheme, lightTheme } from './pages/_practices/d_emotion/theme';
+import { GlobalStyles } from './pages/_practices/d_emotion/global';
+import { ThemeProvider } from '@emotion/react';
+
 import Z_Products from './pages/b_Route/Z_Products';
 import Z_ProductDetail from './pages/b_Route/Z_ProductDetail';
 import Z_ProductInfo from './pages/b_Route/Z_ProductInfo';
 import Z_ProductReviews from './pages/b_Route/Z_ProductReviews';
 import Z_Dashboard from './pages/b_Route/Z_Dashboard';
+
 import HTTP from '@/pages/d_http';
 import GlobalState from '@/pages/e_global_state';
 import Style from '@/pages/f_style';
-import Header from './components/Header';
-import Sidebar from './components/Sidebar';
-import Toast from './components/Toast';
-import { useUIStore } from './stores/ui.store';
+
+// import { useUIStore } from './stores/ui.store';
 import { useGlobalStore } from './stores/global.store';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 function App() {
   const { isLoaded, fetchGlobalData } = useGlobalStore();
@@ -37,17 +46,25 @@ function App() {
   // > 내부의 모든 속성과 메서드 호출 후 좌항에 일치하는 값만을 남김
 
   // 필요한 속성, 메서드만 뽑아서 반환
-  const darkMode = useUIStore(state => state.darkMode); // 구조분해할당 아님 - 객체, 배열 only
+  // const darkMode = useUIStore(state => state.darkMode); // 구조분해할당 아님 - 객체, 배열 only
 
-  const appStyle = {
-    minHeight: '100vh',
-    backgroundColor: darkMode ? "#111" : "#fff",
-    color: darkMode ? "#bbb" : "#111",
-    transition: "all 0.3s ease"
-  }
+  //^ const appStyle = {
+  //   minHeight: '100vh',
+  //   backgroundColor: darkMode ? "#111" : "#fff",
+  //   color: darkMode ? "#bbb" : "#111",
+  //   transition: "all 0.3s ease"
+  // }
   
+const [isDark, setIsDark] = useState<boolean>(false);
+const toggleTheme = () => setIsDark(prev => !prev);
+
+const theme = isDark ? darkTheme : lightTheme;
+
   return (
-    <div style={appStyle}>
+    // <div style={appStyle}>
+    //? ThemeProvider: 전역 테마를 Emotion 스타일에서 바로 사용 가능 
+    <ThemeProvider theme={theme}>
+      <GlobalStyles theme={theme} />
     {/* 경로와 상관없이 렌더링 */}
     <Header />
     <Sidebar />
@@ -71,6 +88,7 @@ function App() {
       <Route path='/practice/post' element={<PostList />} />
       <Route path='/practice/post/:id' element={<PostDetail />} />
       <Route path='/practice/search' element={<SearchApp />} />
+      <Route path='/p/dashboard' element={<Dashboard toggleTheme={toggleTheme}/>}  />
 
       {/* //@ pages/b_Route - Z_실습코드 */}
       {/* 절대경로 - 앞에 / 가 있는 것들 */}
@@ -85,7 +103,7 @@ function App() {
 
     </Routes>
     <Toast />
-    </div>
+    </ThemeProvider>
   )
 }
 
