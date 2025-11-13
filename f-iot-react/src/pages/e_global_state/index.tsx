@@ -12,6 +12,7 @@ function Index() {
       <h1 style={{ backgroundColor: "black", color: "white" }}>
         === 리액트 전역 상태 관리 ===
       </h1>
+
         <ToggleSection title="1. Context API">
           <A_Context />
         </ToggleSection>
@@ -31,6 +32,7 @@ function Index() {
         <ToggleSection title="5. zustand 연습(reservation)">
           <TruckDetailPage />
         </ToggleSection>
+        
     </div>
   )
 }

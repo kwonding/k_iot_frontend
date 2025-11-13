@@ -14,10 +14,11 @@ import Z_ProductReviews from './pages/b_Route/Z_ProductReviews';
 import Z_Dashboard from './pages/b_Route/Z_Dashboard';
 import HTTP from '@/pages/d_http';
 import GlobalState from '@/pages/e_global_state';
-import { useUIStore } from './stores/ui.store';
+import Style from '@/pages/f_style';
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
 import Toast from './components/Toast';
+import { useUIStore } from './stores/ui.store';
 import { useGlobalStore } from './stores/global.store';
 import { useEffect } from 'react';
 
@@ -64,6 +65,7 @@ function App() {
       <Route path='/hooks' element={<Hooks />} />
       <Route path='/http' element={<HTTP />} />
       <Route path='/global-state' element={<GlobalState />} />
+      <Route path='/style' element={<Style />} />
 
       {/* //@ _practices 실습 코드 */}
       <Route path='/practice/post' element={<PostList />} />
