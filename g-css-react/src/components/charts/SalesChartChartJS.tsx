@@ -60,8 +60,8 @@ const options = {
 
 //! 차트를 포함할 컴포넌트
 export const ChartWrapper = styled.div`
-  height: clamp(160px, 32vh, 320px);
   width: 100%;
+  height: clamp(160px, 32vh, 320px);
 `;
 
 function SalesChartChartJS() {
