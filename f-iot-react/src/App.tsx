@@ -1,35 +1,35 @@
-import { Navigate, Route, Routes } from 'react-router-dom';
-import './App.css'
-import Basic from '@/pages/a_basic';
-import RoutePages from '@/pages/b_Route';
-import Hooks from '@/pages/c_hooks';
+import { Navigate, Route, Routes } from "react-router-dom";
+import "./App.css";
+import Basic from "@/pages/a_basic";
+import RoutePages from "@/pages/b_Route";
+import Hooks from "@/pages/c_hooks";
 
-import Navibar from './components/Navibar';
-import PostDetail from './components/PostDetail';
-import Header from './components/Header';
-import Sidebar from './components/Sidebar';
-import Toast from './components/Toast';
+import Navibar from "./components/Navibar";
+import PostDetail from "./components/PostDetail";
+import Header from "./components/Header";
+import Sidebar from "./components/Sidebar";
+import Toast from "./components/Toast";
 
-import PostList from './pages/_practices/a_basic/PostList';
-import SearchApp from './pages/_practices/c_hooks/SearchApp';
-import Dashboard from './pages/_practices/d_emotion/Dashboard';
-import { darkTheme, lightTheme } from './pages/_practices/d_emotion/theme';
-import { GlobalStyles } from './pages/_practices/d_emotion/global';
-import { ThemeProvider } from '@emotion/react';
+import PostList from "./_practices/a_basic/PostList";
+import SearchApp from "./_practices/c_hooks/SearchApp";
+import Dashboard from "./_practices/d_emotion/Dashboard";
+import { darkTheme, lightTheme } from "./_practices/d_emotion/theme";
+import { GlobalStyles } from "./_practices/d_emotion/global";
+import { ThemeProvider } from "@emotion/react";
 
-import Z_Products from './pages/b_Route/Z_Products';
-import Z_ProductDetail from './pages/b_Route/Z_ProductDetail';
-import Z_ProductInfo from './pages/b_Route/Z_ProductInfo';
-import Z_ProductReviews from './pages/b_Route/Z_ProductReviews';
-import Z_Dashboard from './pages/b_Route/Z_Dashboard';
+import Z_Products from "./pages/b_Route/Z_Products";
+import Z_ProductDetail from "./pages/b_Route/Z_ProductDetail";
+import Z_ProductInfo from "./pages/b_Route/Z_ProductInfo";
+import Z_ProductReviews from "./pages/b_Route/Z_ProductReviews";
+import Z_Dashboard from "./pages/b_Route/Z_Dashboard";
 
-import HTTP from '@/pages/d_http';
-import GlobalState from '@/pages/e_global_state';
-import Style from '@/pages/f_style';
+import HTTP from "@/pages/d_http";
+import GlobalState from "@/pages/e_global_state";
+import Style from "@/pages/f_style";
 
 // import { useUIStore } from './stores/ui.store';
-import { useGlobalStore } from './stores/global.store';
-import { useEffect, useState } from 'react';
+import { useGlobalStore } from "./stores/global.store";
+import { useEffect, useState } from "react";
 
 function App() {
   const { isLoaded, fetchGlobalData } = useGlobalStore();
@@ -54,57 +54,59 @@ function App() {
   //   color: darkMode ? "#bbb" : "#111",
   //   transition: "all 0.3s ease"
   // }
-  
-const [isDark, setIsDark] = useState<boolean>(false);
-const toggleTheme = () => setIsDark(prev => !prev);
 
-const theme = isDark ? darkTheme : lightTheme;
+  const [isDark, setIsDark] = useState<boolean>(false);
+  const toggleTheme = () => setIsDark((prev) => !prev);
+
+  const theme = isDark ? darkTheme : lightTheme;
 
   return (
     // <div style={appStyle}>
-    //? ThemeProvider: 전역 테마를 Emotion 스타일에서 바로 사용 가능 
+    //? ThemeProvider: 전역 테마를 Emotion 스타일에서 바로 사용 가능
     <ThemeProvider theme={theme}>
       <GlobalStyles theme={theme} />
-    {/* 경로와 상관없이 렌더링 */}
-    <Header />
-    <Sidebar />
-    <Navibar />
+      {/* 경로와 상관없이 렌더링 */}
+      <Header />
+      <Sidebar />
+      <Navibar />
 
-    {/* Routes 태그: Route를 감싸는 컴포넌트 */}
-    <Routes>
-      {/* Route 태그: 특정 경로에 컴포넌트 지정 (단일 태그 권장) */}
-      <Route path='/basic' element={<Basic />}/>
-      {/* 
+      {/* Routes 태그: Route를 감싸는 컴포넌트 */}
+      <Routes>
+        {/* Route 태그: 특정 경로에 컴포넌트 지정 (단일 태그 권장) */}
+        <Route path="/basic" element={<Basic />} />
+        {/* 
         중첩 라우팅 사용을 위해서 반드시 부모 Route의 path 끝에 /*가 필수임!
         - 중첩된 자식 라우트 인식
       */}
-      <Route path='/route/*' element={<RoutePages />}/>
-      <Route path='/hooks' element={<Hooks />} />
-      <Route path='/http' element={<HTTP />} />
-      <Route path='/global-state' element={<GlobalState />} />
-      <Route path='/style' element={<Style />} />
+        <Route path="/route/*" element={<RoutePages />} />
+        <Route path="/hooks" element={<Hooks />} />
+        <Route path="/http" element={<HTTP />} />
+        <Route path="/global-state" element={<GlobalState />} />
+        <Route path="/style" element={<Style />} />
 
-      {/* //@ _practices 실습 코드 */}
-      <Route path='/practice/post' element={<PostList />} />
-      <Route path='/practice/post/:id' element={<PostDetail />} />
-      <Route path='/practice/search' element={<SearchApp />} />
-      <Route path='/p/dashboard' element={<Dashboard toggleTheme={toggleTheme}/>}  />
+        {/* //@ _practices 실습 코드 */}
+        <Route path="/practice/post" element={<PostList />} />
+        <Route path="/practice/post/:id" element={<PostDetail />} />
+        <Route path="/practice/search" element={<SearchApp />} />
+        <Route
+          path="/p/dashboard"
+          element={<Dashboard toggleTheme={toggleTheme} />}
+        />
 
-      {/* //@ pages/b_Route - Z_실습코드 */}
-      {/* 절대경로 - 앞에 / 가 있는 것들 */}
-      <Route path='/' element={<Navigate to="/products" />} />
-      <Route path='/products' element={<Z_Products />} />
-      <Route path='/products/:id' element={<Z_ProductDetail />}>
-        {/* 상대 경로 - 중첩 라우트 */}
-        <Route path='info' element={<Z_ProductInfo />} />
-        <Route path='reviews' element={<Z_ProductReviews />} />
-      </Route>
-      <Route path='/dashboard' element={<Z_Dashboard />} />
-
-    </Routes>
-    <Toast />
+        {/* //@ pages/b_Route - Z_실습코드 */}
+        {/* 절대경로 - 앞에 / 가 있는 것들 */}
+        <Route path="/" element={<Navigate to="/products" />} />
+        <Route path="/products" element={<Z_Products />} />
+        <Route path="/products/:id" element={<Z_ProductDetail />}>
+          {/* 상대 경로 - 중첩 라우트 */}
+          <Route path="info" element={<Z_ProductInfo />} />
+          <Route path="reviews" element={<Z_ProductReviews />} />
+        </Route>
+        <Route path="/dashboard" element={<Z_Dashboard />} />
+      </Routes>
+      <Toast />
     </ThemeProvider>
-  )
+  );
 }
 
-export default App
+export default App;

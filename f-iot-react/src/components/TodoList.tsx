@@ -1,6 +1,6 @@
-import React from 'react'
-import type { Todo } from '@/pages/_practices/c_hooks/TodoAppLocalStorage';
-import TodoItem from './TodoItem';
+import React from "react";
+import type { Todo } from "@/_practices/c_hooks/TodoAppLocalStorage";
+import TodoItem from "./TodoItem";
 
 //! 목록(TodoItem) 반복 렌더링 컴포넌트
 
@@ -14,18 +14,17 @@ function TodoList({ todos, toggleTodo, deleteTodo }: TodoListProps) {
   return (
     <div>
       <ul>
-        {todos.map(todo  => (
+        {todos.map((todo) => (
           <TodoItem
-          key={todo.id}
-          
-          todo={todo}
-          toggleTodo={toggleTodo}
-          deleteTodo={deleteTodo}
+            key={todo.id}
+            todo={todo}
+            toggleTodo={toggleTodo}
+            deleteTodo={deleteTodo}
           />
         ))}
       </ul>
     </div>
-  )
+  );
 }
 
-export default TodoList
+export default TodoList;
